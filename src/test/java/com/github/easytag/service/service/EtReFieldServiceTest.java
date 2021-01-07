@@ -25,4 +25,12 @@ public class EtReFieldServiceTest {
         System.out.println(val);
     }
 
+    @Test
+    public void testGetValById2() {
+        Map<String,Object> vars = new HashMap<>();
+//        vars.put("id", 2);
+        String val = etReFieldService.getValById(2L, vars);
+        System.out.println(val);
+    }
+
 }

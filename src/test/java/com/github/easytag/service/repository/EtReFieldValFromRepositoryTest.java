@@ -31,4 +31,17 @@ public class EtReFieldValFromRepositoryTest {
         etReFieldValFromRepository.save(etReFieldValFrom);
     }
 
+    @Test
+    public void testSave2() {
+        EtReFieldValFrom etReFieldValFrom = new EtReFieldValFrom();
+        etReFieldValFrom.setFromType(FromTypeEnum.FIXED_VALUE.getCode());
+        etReFieldValFrom.setFixVal("testV");
+        etReFieldValFrom.setDeleted(false);
+        etReFieldValFrom.setCreateTime(new Date());
+        etReFieldValFrom.setUpdateTime(new Date());
+        etReFieldValFrom.setCreatedBy("828");
+        etReFieldValFrom.setUpdatedBy("828");
+        etReFieldValFromRepository.save(etReFieldValFrom);
+    }
+
 }

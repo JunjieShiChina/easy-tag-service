@@ -42,7 +42,6 @@ public class EtReSqlServiceImpl implements EtReSqlService {
         Connection connection = null;
         Statement statement = null;
         try {
-            Class.forName(etReSqlDataSource.getDriverType());
             connection = DriverManager.getConnection(etReSqlDataSource.getUrl(), etReSqlDataSource.getUserName(), etReSqlDataSource.getPassword());
             String executeSql = PlaceholderResolver.getDefaultResolver().resolveByMap(etReSql.getExeSql(), vars);
             statement = connection.createStatement();

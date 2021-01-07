@@ -22,7 +22,7 @@ public class EtReFieldValFrom {
     private Integer fromType;
     @Column(name = "fix_val", nullable = true, columnDefinition="varchar(255) COMMENT '固定值'")
     private String fixVal;
-    @Column(name = "sql_id", nullable = false, columnDefinition="int(20) COMMENT 'sql_id'")
+    @Column(name = "sql_id", nullable = true, columnDefinition="int(20) COMMENT 'sql_id'")
     private Long sqlId;
     @Column(name = "deleted", nullable = false, columnDefinition="tinyint(2) COMMENT '是否已删除'")
     private Boolean deleted;

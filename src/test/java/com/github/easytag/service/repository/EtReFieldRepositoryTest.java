@@ -34,4 +34,18 @@ public class EtReFieldRepositoryTest {
         etReFieldRepository.save(etReField);
     }
 
+    @Test
+    public void testSave2() {
+        EtReField etReField = new EtReField();
+        etReField.setName("岗位编号2");
+        etReField.setValFromId(2L);
+        etReField.setDataType(DataTypeEnum.STRING.getCode());
+        etReField.setDeleted(false);
+        etReField.setCreateTime(new Date());
+        etReField.setUpdateTime(new Date());
+        etReField.setCreatedBy("828");
+        etReField.setUpdatedBy("828");
+        etReFieldRepository.save(etReField);
+    }
+
 }
