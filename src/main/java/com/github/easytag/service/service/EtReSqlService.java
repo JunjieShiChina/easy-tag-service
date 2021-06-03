@@ -6,4 +6,5 @@ public interface EtReSqlService {
 
     String getValFromSql(Long etReSqlId, Map<String,Object> vars);
 
+
 }
