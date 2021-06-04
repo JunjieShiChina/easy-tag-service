@@ -1,5 +1,6 @@
 package com.github.easytag.service.service.impl;
 
+import com.github.easytag.service.dto.ReSqlDTO;
 import com.github.easytag.service.entity.EtReSql;
 import com.github.easytag.service.entity.EtReSqlDataSource;
 import com.github.easytag.service.repository.EtReSqlRepository;
@@ -7,10 +8,13 @@ import com.github.easytag.service.resolver.PlaceholderResolver;
 import com.github.easytag.service.service.EtReSqlDataSourceService;
 import com.github.easytag.service.service.EtReSqlService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 
 import java.sql.*;
+import java.util.Date;
 import java.util.Map;
 
 @Service
@@ -36,6 +40,29 @@ public class EtReSqlServiceImpl implements EtReSqlService {
         }
 
         return execute(etReSql, etReSqlDataSource, vars);
+    }
+
+    @Override
+    public EtReSql saveSql(ReSqlDTO reSqlDTO) {
+        java.util.Date curDate = new Date();
+        EtReSql etReSql;
+        if(!ObjectUtils.isEmpty(reSqlDTO.getId())) {
+            etReSql = getById(reSqlDTO.getId());
+        } else {
+            etReSql = new EtReSql();
+            etReSql.setCreatedBy(reSqlDTO.getModifier());
+            etReSql.setCreateTime(curDate);
+            etReSql.setDeleted(false);
+        }
+        BeanUtils.copyProperties(reSqlDTO, etReSql);
+        etReSql.setUpdatedBy(reSqlDTO.getModifier());
+        etReSql.setUpdateTime(curDate);
+        return etReSqlRepository.save(etReSql);
+    }
+
+    @Override
+    public EtReSql getById(Long etReSqlId) {
+        return etReSqlRepository.getFirstByIdAndDeletedFalse(etReSqlId);
     }
 
     private String execute(EtReSql etReSql, EtReSqlDataSource etReSqlDataSource, Map<String, Object> vars) {

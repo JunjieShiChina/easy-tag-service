@@ -37,4 +37,14 @@ public class EtReFieldValFromServiceImpl implements EtReFieldValFromService {
 
         return null;
     }
+
+    @Override
+    public EtReFieldValFrom getFieldValFromById(Long id) {
+        return etReFieldValFromRepository.getFirstByIdAndDeletedFalse(id);
+    }
+
+    @Override
+    public EtReFieldValFrom save(EtReFieldValFrom etReFieldValFrom) {
+        return etReFieldValFromRepository.save(etReFieldValFrom);
+    }
 }

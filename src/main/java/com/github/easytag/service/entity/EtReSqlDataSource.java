@@ -28,11 +28,11 @@ public class EtReSqlDataSource {
     private String userName;
     @Column(name = "password", nullable = false, columnDefinition="varchar(255) COMMENT 'password'")
     private String password;
-    @Column(name = "deleted", nullable = false, columnDefinition="tinyint(2) COMMENT '是否已删除'")
+    @Column(name = "deleted", nullable = true, columnDefinition="tinyint(2) COMMENT '是否已删除'")
     private Boolean deleted;
-    @Column(name = "create_time", nullable = false, columnDefinition="timestamp COMMENT '创建时间'")
+    @Column(name = "create_time", nullable = true, columnDefinition="timestamp DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间'")
     private Date createTime;
-    @Column(name = "created_by", nullable = false, columnDefinition="varchar(20) COMMENT '创建者'")
+    @Column(name = "created_by", nullable = true, columnDefinition="varchar(20) COMMENT '创建者'")
     private String createdBy;
     @Column(name = "update_time", nullable = false, columnDefinition="timestamp DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间'")
     private Date updateTime;
