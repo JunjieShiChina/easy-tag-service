@@ -1,6 +1,7 @@
 package com.github.easytag.service.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -12,6 +13,7 @@ import java.util.Date;
 @Entity
 @Table(name = "et_re_tag_val", indexes = {@Index(name="idx_tag_id", columnList = "tag_id")})
 @org.hibernate.annotations.Table(appliesTo = "et_re_tag_val",comment="表达式变量表")
+@Proxy(lazy = false)
 public class EtReTagVal {
     @Id
     @Column(name = "id", columnDefinition="int(20) COMMENT 'id'")
@@ -22,10 +24,8 @@ public class EtReTagVal {
     private Long tagId;
     @Column(name = "val_name", nullable = false, columnDefinition="varchar(60) COMMENT '变量名称'")
     private String valName;
-    @Column(name = "val_value", nullable = false, columnDefinition="varchar(60) COMMENT '变量值'")
+    @Column(name = "val_value", nullable = false, columnDefinition="text COMMENT '变量值'")
     private String valValue;
-    @Column(name = "val_type", nullable = false, columnDefinition="int(2) COMMENT '变量类型 0:常量 1:字段'")
-    private Integer valType;
     @Column(name = "val_data_type", nullable = true, columnDefinition="int(2) COMMENT '变量数据类型'")
     private Integer valDataType;
     @Column(name = "deleted", nullable = false, columnDefinition="tinyint(2) COMMENT '是否已删除'")

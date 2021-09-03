@@ -1,6 +1,7 @@
 package com.github.easytag.service.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -12,6 +13,7 @@ import java.util.Date;
 @Entity
 @Table(name = "et_re_field", indexes = {@Index(name="idx_val_from_id", columnList = "val_from_id")})
 @org.hibernate.annotations.Table(appliesTo = "et_re_field",comment="字段表")
+@Proxy(lazy = false)
 public class EtReField {
     @Id
     @Column(name = "id", columnDefinition="int(20) COMMENT 'id'")

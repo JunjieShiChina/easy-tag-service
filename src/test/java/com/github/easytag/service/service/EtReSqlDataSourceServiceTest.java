@@ -20,7 +20,7 @@ public class EtReSqlDataSourceServiceTest {
     @Test
     public void testSaveDataSource() {
         DataSourceDTO dataSourceDTO = new DataSourceDTO();
-        dataSourceDTO.setId(1L);
+//        dataSourceDTO.setId(1L);
         dataSourceDTO.setName("testMysql");
         dataSourceDTO.setDriverType(DriverTypeEnum.MYSQL.getDriverClassName());
         dataSourceDTO.setUrl("jdbc:mysql://49.234.98.166:3306/tag_test?useUnicode=true&characterEncoding=utf8");
